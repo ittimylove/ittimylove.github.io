@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>字符串-C语言 | ZJH&#39;S BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="·字符串">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串-C语言">
+<meta property="og:url" content="http://zjnkse.top/2022/08/26/%E5%AD%97%E7%AC%A6%E4%B8%B2-C%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:site_name" content="ZJH&#39;S BLOG">
+<meta property="og:description" content="·字符串">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-26T02:13:27.000Z">
+<meta property="article:modified_time" content="2022-08-26T02:30:39.870Z">
+<meta property="article:author" content="Zhu Jun Hao">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="ZJH'S BLOG" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ZJH&#39;S BLOG</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">used to record</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://zjnkse.top"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-字符串-C语言" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/08/26/%E5%AD%97%E7%AC%A6%E4%B8%B2-C%E8%AF%AD%E8%A8%80/" class="article-date">
+  <time class="dt-published" datetime="2022-08-26T02:13:27.000Z" itemprop="datePublished">2022-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      字符串-C语言
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="·字符串"><a href="#·字符串" class="headerlink" title="·字符串"></a>·字符串</h1><span id="more"></span>
+
+<h2 id="一、字符串的一些特点"><a href="#一、字符串的一些特点" class="headerlink" title="一、字符串的一些特点"></a>一、字符串的一些特点</h2><h3 id="1-从ANSI-C标准起，如果字符串面量之间没有间隔，或者用空白字符分隔，C会将其视为串联起来的字符串面量。"><a href="#1-从ANSI-C标准起，如果字符串面量之间没有间隔，或者用空白字符分隔，C会将其视为串联起来的字符串面量。" class="headerlink" title="1.从ANSI C标准起，如果字符串面量之间没有间隔，或者用空白字符分隔，C会将其视为串联起来的字符串面量。"></a>1.从ANSI C标准起，如果字符串面量之间没有间隔，或者用空白字符分隔，C会将其视为串联起来的字符串面量。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> greeting[<span class="number">50</span>] = <span class="string">&quot;Hello,and&quot;</span><span class="string">&quot;how are&quot;</span><span class="string">&quot;you&quot;</span><span class="string">&quot;today!&quot;</span>;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="type">char</span> greeting[<span class="number">50</span>]=<span class="string">&quot;Hello,and how are you today!&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-如果要在字符串内部使用双引号，必须在双引号前面加上一个反斜杠"><a href="#2-如果要在字符串内部使用双引号，必须在双引号前面加上一个反斜杠" class="headerlink" title="2.如果要在字符串内部使用双引号，必须在双引号前面加上一个反斜杠()"></a>2.如果要在字符串内部使用双引号，必须在双引号前面加上一个反斜杠()</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;\&quot;Run ,Spot, run!\&quot;exclaimed Dick.\n&quot;</span>)</span><br><span class="line"><span class="comment">//输出如下</span></span><br><span class="line"><span class="string">&quot;Run , Spot, run!&quot;</span>exclaimed Dick.</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-字符串属于静态存储类别，这说明说如在函数中使用字符串常量，该字符串只会被储存一次，在整个程序的生命期内存在，即使函数被调用多次。用双引号括起来的内容被视为指向该字符串储存位置的指针。这类似于把数组名作为指向该数组位置的指针。"><a href="#3-字符串属于静态存储类别，这说明说如在函数中使用字符串常量，该字符串只会被储存一次，在整个程序的生命期内存在，即使函数被调用多次。用双引号括起来的内容被视为指向该字符串储存位置的指针。这类似于把数组名作为指向该数组位置的指针。" class="headerlink" title="3.字符串属于静态存储类别，这说明说如在函数中使用字符串常量，该字符串只会被储存一次，在整个程序的生命期内存在，即使函数被调用多次。用双引号括起来的内容被视为指向该字符串储存位置的指针。这类似于把数组名作为指向该数组位置的指针。"></a>3.字符串属于静态存储类别，这说明说如在函数中使用字符串常量，该字符串只会被储存一次，在整个程序的生命期内存在，即使函数被调用多次。用双引号括起来的内容被视为指向该字符串储存位置的指针。这类似于把数组名作为指向该数组位置的指针。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//把字符串看成指针</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s,%p,%c\n&quot;</span>,<span class="string">&quot;We&quot;</span><span class="string">&quot;are&quot;</span>*<span class="string">&quot;space farers&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="comment">//We, 0x100000f61, s  其中0x100000f61是a的地址</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="注：字符数组名和其他数组名一样，是该数组首元素的地址。"><a href="#注：字符数组名和其他数组名一样，是该数组首元素的地址。" class="headerlink" title="注：字符数组名和其他数组名一样，是该数组首元素的地址。"></a>注：字符数组名和其他数组名一样，是该数组首元素的地址。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> car[<span class="number">0</span>] = <span class="string">&quot;Tata&quot;</span>;</span><br><span class="line"><span class="comment">//那么</span></span><br><span class="line">car == &amp;[<span class="number">0</span>]</span><br><span class="line">*car == <span class="string">&#x27;T&#x27;</span></span><br><span class="line">*(car+<span class="number">1</span>) == car[<span class="number">1</span>] == <span class="string">&#x27;a&#x27;</span>    </span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、字符串数组和初始化"><a href="#二、字符串数组和初始化" class="headerlink" title="二、字符串数组和初始化"></a>二、字符串数组和初始化</h2><h3 id="定义字符串数组时，必须让编译器知道需要多少空间。"><a href="#定义字符串数组时，必须让编译器知道需要多少空间。" class="headerlink" title="定义字符串数组时，必须让编译器知道需要多少空间。"></a>定义字符串数组时，必须让编译器知道需要多少空间。</h3><h3 id="1-用足够空间的数组储存字符串"><a href="#1-用足够空间的数组储存字符串" class="headerlink" title="1.用足够空间的数组储存字符串"></a>1.用足够空间的数组储存字符串</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> m1[<span class="number">40</span>] = <span class="string">&quot;Limit yourself to one line&#x27;s worth.&quot;</span>;</span><br><span class="line"><span class="comment">//const表明不会更改这个字符串</span></span><br><span class="line"><span class="comment">//下面是标准的数组初始化形式</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> m1[<span class="number">40</span>] = &#123;<span class="string">&quot;&quot;</span><span class="string">L&quot;,&quot;</span>i<span class="string">&quot;,&quot;</span>m<span class="string">&quot;,&quot;</span><span class="string">&quot;&quot;</span><span class="string">&quot;&quot;</span><span class="string">&quot;&quot;</span><span class="string">&quot;&quot;</span><span class="string">&quot;&quot;</span>,<span class="string">&quot;.&quot;</span>,<span class="string">&quot;\0&quot;</span><span class="string">&quot;;&#125;</span></span><br><span class="line"><span class="string">//注意最后的空字符串，没有这个空字符，这就不是一个字符串，而是一个字符数组。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="注：在指定数组大小时，要确保数组的元素个数至少要比字符串是长度多一（为了容纳空字符）"><a href="#注：在指定数组大小时，要确保数组的元素个数至少要比字符串是长度多一（为了容纳空字符）" class="headerlink" title="注：在指定数组大小时，要确保数组的元素个数至少要比字符串是长度多一（为了容纳空字符）"></a>注：在指定数组大小时，要确保数组的元素个数至少要比字符串是长度多一（为了容纳空字符）</h4><h4 id="所有未被使用的元素被自动初始化为0（这里的0指的是char形式的空字符，不是数字字符0）"><a href="#所有未被使用的元素被自动初始化为0（这里的0指的是char形式的空字符，不是数字字符0）" class="headerlink" title="所有未被使用的元素被自动初始化为0（这里的0指的是char形式的空字符，不是数字字符0）"></a>所有未被使用的元素被自动初始化为0（这里的0指的是char形式的空字符，不是数字字符0）</h4><h3 id="2-让编译器确定数组的大小"><a href="#2-让编译器确定数组的大小" class="headerlink" title="2.让编译器确定数组的大小"></a>2.让编译器确定数组的大小</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> m2[] = <span class="string">&quot;If you can&#x27;t think of anything, fake it.&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="注：让编译器计算数组的大小只能用在初始化数组时，如果创建一个稍后再填充的数组，就必须在声明时指定大小。"><a href="#注：让编译器计算数组的大小只能用在初始化数组时，如果创建一个稍后再填充的数组，就必须在声明时指定大小。" class="headerlink" title="注：让编译器计算数组的大小只能用在初始化数组时，如果创建一个稍后再填充的数组，就必须在声明时指定大小。"></a>注：让编译器计算数组的大小只能用在初始化数组时，如果创建一个稍后再填充的数组，就必须在声明时指定大小。</h4><h4 id="声明数组时，数组大小必须是可求值的整数。在C99新增变长数组之前，数组的大小必须是整型常量，包括由整数常量组成的表达式。"><a href="#声明数组时，数组大小必须是可求值的整数。在C99新增变长数组之前，数组的大小必须是整型常量，包括由整数常量组成的表达式。" class="headerlink" title="声明数组时，数组大小必须是可求值的整数。在C99新增变长数组之前，数组的大小必须是整型常量，包括由整数常量组成的表达式。"></a>声明数组时，数组大小必须是可求值的整数。在C99新增变长数组之前，数组的大小必须是整型常量，包括由整数常量组成的表达式。</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n = <span class="number">8</span>;</span><br><span class="line"><span class="type">char</span> cookies[<span class="number">1</span>];	<span class="comment">//有效</span></span><br><span class="line"><span class="type">char</span> cakes[<span class="number">2</span> + <span class="number">5</span>];  <span class="comment">//有效，数组大小是整型常量表达式</span></span><br><span class="line"><span class="type">char</span> pies[<span class="number">2</span>*<span class="keyword">sizeof</span>(<span class="type">long</span> <span class="type">double</span>) + <span class="number">1</span>];<span class="comment">//有效</span></span><br><span class="line"><span class="type">char</span> crumbs[n];		<span class="comment">//C99标准之前无效，C99之后这种数组是变长数组</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="补：还可以用指针表示法创建字符串"><a href="#补：还可以用指针表示法创建字符串" class="headerlink" title="补：还可以用指针表示法创建字符串"></a>补：还可以用指针表示法创建字符串</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> * pt1 = <span class="string">&quot;Something is pointing at me&quot;</span></span><br><span class="line"><span class="comment">//该声明与下面的声明几乎相同(不是完全相同)</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> ar1[] = <span class="string">&quot;Something is pointing at me.&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、数组和指针"><a href="#三、数组和指针" class="headerlink" title="三、数组和指针"></a>三、数组和指针</h2><h3 id="1-数组形式和指针形式的区别"><a href="#1-数组形式和指针形式的区别" class="headerlink" title="1.数组形式和指针形式的区别"></a>1.数组形式和指针形式的区别</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://zjnkse.top/2022/08/26/%E5%AD%97%E7%AC%A6%E4%B8%B2-C%E8%AF%AD%E8%A8%80/" data-id="cl7bly1yf00031std39wthmhj" data-title="字符串-C语言" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/08/26/Typora%E5%9F%BA%E6%9C%AC%E5%BF%AB%E6%8D%B7%E9%94%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Typora基本快捷键
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/08/26/I-LOVE-LIUTONG/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">I LOVE LIUTONG</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/08/27/%E8%AF%A6%E8%A7%A3Typora/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/26/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E9%A1%BA%E5%BA%8F/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/26/Typora%E5%9F%BA%E6%9C%AC%E5%BF%AB%E6%8D%B7%E9%94%AE/">Typora基本快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/26/%E5%AD%97%E7%AC%A6%E4%B8%B2-C%E8%AF%AD%E8%A8%80/">字符串-C语言</a>
+          </li>
+        
+          <li>
+            <a href="/2022/08/26/I-LOVE-LIUTONG/">I LOVE LIUTONG</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 Zhu Jun Hao<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

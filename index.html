@@ -87,178 +87,16 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="·字符串"><a href="#·字符串" class="headerlink" title="·字符串"></a>·字符串</h1><h2 id="一、字符串的一些特点"><a href="#一、字符串的一些特点" class="headerlink" title="一、字符串的一些特点"></a>一、字符串的一些特点</h2><h3 id="1-从ANSI-C标准起，如果字符串面量之间没有间隔，或者用空白字符分隔，C会将其视为串联起来的字符串面量。"><a href="#1-从ANSI-C标准起，如果字符串面量之间没有间隔，或者用空白字符分隔，C会将其视为串联起来的字符串面量。" class="headerlink" title="1.从ANSI C标准起，如果字符串面量之间没有间隔，或者用空白字符分隔，C会将其视为串联起来的字符串面量。"></a>1.从ANSI C标准起，如果字符串面量之间没有间隔，或者用空白字符分隔，C会将其视为串联起来的字符串面量。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> greeting[<span class="number">50</span>] = <span class="string">&quot;Hello,and&quot;</span><span class="string">&quot;how are&quot;</span><span class="string">&quot;you&quot;</span><span class="string">&quot;today!&quot;</span>;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="type">char</span> greeting[<span class="number">50</span>]=<span class="string">&quot;Hello,and how are you today!&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-如果要在字符串内部使用双引号，必须在双引号前面加上一个反斜杠"><a href="#2-如果要在字符串内部使用双引号，必须在双引号前面加上一个反斜杠" class="headerlink" title="2.如果要在字符串内部使用双引号，必须在双引号前面加上一个反斜杠()"></a>2.如果要在字符串内部使用双引号，必须在双引号前面加上一个反斜杠()</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;\&quot;Run ,Spot, run!\&quot;exclaimed Dick.\n&quot;</span>)</span><br><span class="line"><span class="comment">//输出如下</span></span><br><span class="line"><span class="string">&quot;Run , Spot, run!&quot;</span>exclaimed Dick.</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-字符串属于静态存储类别，这说明说如在函数中使用字符串常量，该字符串只会被储存一次，在整个程序的生命期内存在，即使函数被调用多次。用双引号括起来的内容被视为指向该字符串储存位置的指针。这类似于把数组名作为指向该数组位置的指针。"><a href="#3-字符串属于静态存储类别，这说明说如在函数中使用字符串常量，该字符串只会被储存一次，在整个程序的生命期内存在，即使函数被调用多次。用双引号括起来的内容被视为指向该字符串储存位置的指针。这类似于把数组名作为指向该数组位置的指针。" class="headerlink" title="3.字符串属于静态存储类别，这说明说如在函数中使用字符串常量，该字符串只会被储存一次，在整个程序的生命期内存在，即使函数被调用多次。用双引号括起来的内容被视为指向该字符串储存位置的指针。这类似于把数组名作为指向该数组位置的指针。"></a>3.字符串属于静态存储类别，这说明说如在函数中使用字符串常量，该字符串只会被储存一次，在整个程序的生命期内存在，即使函数被调用多次。用双引号括起来的内容被视为指向该字符串储存位置的指针。这类似于把数组名作为指向该数组位置的指针。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//把字符串看成指针</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%s,%p,%c\n&quot;</span>,<span class="string">&quot;We&quot;</span><span class="string">&quot;are&quot;</span>*<span class="string">&quot;space farers&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="comment">//We, 0x100000f61, s  其中0x100000f61是a的地址</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="注：字符数组名和其他数组名一样，是该数组首元素的地址。"><a href="#注：字符数组名和其他数组名一样，是该数组首元素的地址。" class="headerlink" title="注：字符数组名和其他数组名一样，是该数组首元素的地址。"></a>注：字符数组名和其他数组名一样，是该数组首元素的地址。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> car[<span class="number">0</span>] = <span class="string">&quot;Tata&quot;</span>;</span><br><span class="line"><span class="comment">//那么</span></span><br><span class="line">car == &amp;[<span class="number">0</span>]</span><br><span class="line">*car == <span class="string">&#x27;T&#x27;</span></span><br><span class="line">*(car+<span class="number">1</span>) == car[<span class="number">1</span>] == <span class="string">&#x27;a&#x27;</span>    </span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二、字符串数组和初始化"><a href="#二、字符串数组和初始化" class="headerlink" title="二、字符串数组和初始化"></a>二、字符串数组和初始化</h2><h3 id="定义字符串数组时，必须让编译器知道需要多少空间。"><a href="#定义字符串数组时，必须让编译器知道需要多少空间。" class="headerlink" title="定义字符串数组时，必须让编译器知道需要多少空间。"></a>定义字符串数组时，必须让编译器知道需要多少空间。</h3><h3 id="1-用足够空间的数组储存字符串"><a href="#1-用足够空间的数组储存字符串" class="headerlink" title="1.用足够空间的数组储存字符串"></a>1.用足够空间的数组储存字符串</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> m1[<span class="number">40</span>] = <span class="string">&quot;Limit yourself to one line&#x27;s worth.&quot;</span>;</span><br><span class="line"><span class="comment">//const表明不会更改这个字符串</span></span><br><span class="line"><span class="comment">//下面是标准的数组初始化形式</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> m1[<span class="number">40</span>] = &#123;<span class="string">&quot;&quot;</span><span class="string">L&quot;,&quot;</span>i<span class="string">&quot;,&quot;</span>m<span class="string">&quot;,&quot;</span><span class="string">&quot;&quot;</span><span class="string">&quot;&quot;</span><span class="string">&quot;&quot;</span><span class="string">&quot;&quot;</span><span class="string">&quot;&quot;</span>,<span class="string">&quot;.&quot;</span>,<span class="string">&quot;\0&quot;</span><span class="string">&quot;;&#125;</span></span><br><span class="line"><span class="string">//注意最后的空字符串，没有这个空字符，这就不是一个字符串，而是一个字符数组。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="注：在指定数组大小时，要确保数组的元素个数至少要比字符串是长度多一（为了容纳空字符）"><a href="#注：在指定数组大小时，要确保数组的元素个数至少要比字符串是长度多一（为了容纳空字符）" class="headerlink" title="注：在指定数组大小时，要确保数组的元素个数至少要比字符串是长度多一（为了容纳空字符）"></a>注：在指定数组大小时，要确保数组的元素个数至少要比字符串是长度多一（为了容纳空字符）</h4><h4 id="所有未被使用的元素被自动初始化为0（这里的0指的是char形式的空字符，不是数字字符0）"><a href="#所有未被使用的元素被自动初始化为0（这里的0指的是char形式的空字符，不是数字字符0）" class="headerlink" title="所有未被使用的元素被自动初始化为0（这里的0指的是char形式的空字符，不是数字字符0）"></a>所有未被使用的元素被自动初始化为0（这里的0指的是char形式的空字符，不是数字字符0）</h4><h3 id="2-让编译器确定数组的大小"><a href="#2-让编译器确定数组的大小" class="headerlink" title="2.让编译器确定数组的大小"></a>2.让编译器确定数组的大小</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> m2[] = <span class="string">&quot;If you can&#x27;t think of anything, fake it.&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h4 id="注：让编译器计算数组的大小只能用在初始化数组时，如果创建一个稍后再填充的数组，就必须在声明时指定大小。"><a href="#注：让编译器计算数组的大小只能用在初始化数组时，如果创建一个稍后再填充的数组，就必须在声明时指定大小。" class="headerlink" title="注：让编译器计算数组的大小只能用在初始化数组时，如果创建一个稍后再填充的数组，就必须在声明时指定大小。"></a>注：让编译器计算数组的大小只能用在初始化数组时，如果创建一个稍后再填充的数组，就必须在声明时指定大小。</h4><h4 id="声明数组时，数组大小必须是可求值的整数。在C99新增变长数组之前，数组的大小必须是整型常量，包括由整数常量组成的表达式。"><a href="#声明数组时，数组大小必须是可求值的整数。在C99新增变长数组之前，数组的大小必须是整型常量，包括由整数常量组成的表达式。" class="headerlink" title="声明数组时，数组大小必须是可求值的整数。在C99新增变长数组之前，数组的大小必须是整型常量，包括由整数常量组成的表达式。"></a>声明数组时，数组大小必须是可求值的整数。在C99新增变长数组之前，数组的大小必须是整型常量，包括由整数常量组成的表达式。</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> n = <span class="number">8</span>;</span><br><span class="line"><span class="type">char</span> cookies[<span class="number">1</span>];	<span class="comment">//有效</span></span><br><span class="line"><span class="type">char</span> cakes[<span class="number">2</span> + <span class="number">5</span>];  <span class="comment">//有效，数组大小是整型常量表达式</span></span><br><span class="line"><span class="type">char</span> pies[<span class="number">2</span>*<span class="keyword">sizeof</span>(<span class="type">long</span> <span class="type">double</span>) + <span class="number">1</span>];<span class="comment">//有效</span></span><br><span class="line"><span class="type">char</span> crumbs[n];		<span class="comment">//C99标准之前无效，C99之后这种数组是变长数组</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="补：还可以用指针表示法创建字符串"><a href="#补：还可以用指针表示法创建字符串" class="headerlink" title="补：还可以用指针表示法创建字符串"></a>补：还可以用指针表示法创建字符串</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> * pt1 = <span class="string">&quot;Something is pointing at me&quot;</span></span><br><span class="line"><span class="comment">//该声明与下面的声明几乎相同(不是完全相同)</span></span><br><span class="line"><span class="type">const</span> <span class="type">char</span> ar1[] = <span class="string">&quot;Something is pointing at me.&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、数组和指针"><a href="#三、数组和指针" class="headerlink" title="三、数组和指针"></a>三、数组和指针</h2><h3 id="1-数组形式和指针形式的区别"><a href="#1-数组形式和指针形式的区别" class="headerlink" title="1.数组形式和指针形式的区别"></a>1.数组形式和指针形式的区别</h3><h4 id="初始化字符数组来储存字符串和初始化指针来指向字符串区别"><a href="#初始化字符数组来储存字符串和初始化指针来指向字符串区别" class="headerlink" title="初始化字符数组来储存字符串和初始化指针来指向字符串区别"></a>初始化字符数组来储存字符串和初始化指针来指向字符串区别</h4><h4 id="假设有下面两个声明："><a href="#假设有下面两个声明：" class="headerlink" title="假设有下面两个声明："></a>假设有下面两个声明：</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> heart[] = <span class="string">&quot;I love CUS&quot;</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">char</span> *head = <span class="string">&quot;I love CUS&quot;</span>;</span><br></pre></td></tr></table></figure>
-
-<h4 id="两者的主要区别是：数组名heart是常量，而指针名head是变量。那么，实际使用有什么区别呢？"><a href="#两者的主要区别是：数组名heart是常量，而指针名head是变量。那么，实际使用有什么区别呢？" class="headerlink" title="两者的主要区别是：数组名heart是常量，而指针名head是变量。那么，实际使用有什么区别呢？"></a>两者的主要区别是：数组名heart是常量，而指针名head是变量。那么，实际使用有什么区别呢？</h4><ul>
-<li>首先，两者都可以使用数组表示法：</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>,i&lt;<span class="number">6</span>,i++)</span><br><span class="line">	<span class="built_in">putchar</span>(heart[i]);</span><br><span class="line"><span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>,i&lt;<span class="number">6</span>,i++)</span><br><span class="line">	<span class="built_in">putchar</span>(head[i]);</span><br><span class="line"><span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line"><span class="comment">//上面两段代码的输出是：</span></span><br><span class="line">I love</span><br><span class="line">I love</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>其次，两者都能进行指针加法操作：</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>,i&lt;<span class="number">6</span>,i++)</span><br><span class="line">	<span class="built_in">putchar</span>(*(heart + <span class="number">1</span>));</span><br><span class="line"><span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>,i&lt;<span class="number">6</span>,i++)</span><br><span class="line">	<span class="built_in">putchar</span>(*(head + <span class="number">1</span>));</span><br><span class="line"><span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line"><span class="comment">//上面两段代码的输出是：</span></span><br><span class="line">I love</span><br><span class="line">I love</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>但是，只有指针表示法可以进行递增操作：</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (*(head) != <span class="string">&#x27;\0&#x27;</span>)		<span class="comment">//在字符串末尾处停止</span></span><br><span class="line">	<span class="built_in">putchar</span>(*(head++));		<span class="comment">//打印字符，指针指向下一个位置</span></span><br><span class="line"><span class="comment">//代码输出如下：</span></span><br><span class="line">I love CUS</span><br></pre></td></tr></table></figure>
-
-<p>假设想让hea和heart统一，可以这样做：</p>
-<p><code>head = heart; 	//head现在指向数组heart</code></p>
-<p>这使得head指针指向heart数组的首元素。</p>
-<p>但是不能这样子写：</p>
-<p><code>heart = head; 	//非法构造</code></p>
-<p>这类似于x &#x3D; 3;和3 &#x3D; x;的情况。赋值运算符的左侧必须是变量。</p>
-<ul>
-<li><strong>数组初始化可以改变数组中的元素</strong></li>
-</ul>
-<p><code>heart[7] = &#39;M&#39;;</code>或者<code>*heart+7 = &#39;M&#39;;</code></p>
-<p>我们来看一下未使用const限定符的指针初始化：</p>
-<p><code>char * word = &quot;frame&quot;;</code></p>
-<p><code>word[1] =&quot;1&quot;； /是否允许 </code></p>
-<p>编译器可能允许这样做，但是对当前的C标准而言，这样的行为是未定义的。</p>
-<p><strong>因此在把指针初始化为字符串面量时使用const限定符</strong>：</p>
-<p><code>const char * p1 = &quot;CUS&quot;;</code></p>
-<p>总之，如果不修改字符串，不要用指针指向字符串字面量。</p>
-<h2 id="四、字符串数组"><a href="#四、字符串数组" class="headerlink" title="四、字符串数组"></a>四、字符串数组</h2><p>如果创建一个字符数组会很方便，可以通过数组下标访问多个不同的字符串。</p>
-<p>详见C Primer Plus</p>
-<p>综上所述，如果要用数组表示一系列待显示的字符串，请使用指针数组，因为他比二维字符数组效率高，但缺点是指针指向的字符串面量不可以被改变。</p>
-<p>所以如果要改变字符串或者为字符串输入预留空间，不要使用指向字符串字面量的指针。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> <span class="type">char</span> *mytalents[LIM] = &#123;</span><br><span class="line">    <span class="string">&quot;Adding&quot;</span>,<span class="string">&quot;love&quot;</span>,<span class="string">&quot;you&quot;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">char</span> yourtalents[LIM][SLEN] = &#123;</span><br><span class="line">    <span class="string">&quot;Adding&quot;</span>,<span class="string">&quot;love&quot;</span>,<span class="string">&quot;you&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//yourtalents[LIM][SLEM]表示第LIM个字符串的第SLEM个字符</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="指针和字符串"><a href="#指针和字符串" class="headerlink" title="指针和字符串"></a>指针和字符串</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio&gt;</span></span></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> * mesgg = <span class="string">&quot;Don&#x27;t be a fool！&quot;</span>；</span><br><span class="line">    <span class="type">const</span> <span class="type">char</span> * copy;</span><br><span class="line">    </span><br><span class="line">    copy = mesg;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%\n&quot;</span>,copy);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;mesg = %s; &amp;mesg= %p;value = %p\n&quot;</span>,mesg,&amp;mesg,mesg);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;copy = %s; &amp;copy= %p;value = %p\n&quot;</span>,copy,&amp;copy,copy);</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//该程序中copy拷贝了mesg</span></span><br><span class="line"><span class="comment">//输出结果如下</span></span><br><span class="line"><span class="comment">/*Don&#x27;t be a fool!</span></span><br><span class="line"><span class="comment">mesg = Don&#x27;t be a fool!; &amp;mesg = 0x0012ff48; value = 0x0040a000</span></span><br><span class="line"><span class="comment">copy = Don&#x27;t be a fool!; &amp;copy = 0x0012ff44; value = 0x0040a000</span></span><br></pre></td></tr></table></figure>
-
-<p>指针mesg和copy分别储存在地址为0x0012ff48和0x0012ff44的内存中。</p>
-<p>最后一项value显示两个指针的值，所谓指针的值就是它存储的地址。mesg和copy的值一样，说明它们指向的同一个位置。因此，程序并未拷贝字符串。语句copy &#x3D; mesg把mesg的值赋给copy，即让copy也指向mesg指向的字符串，但是未拷贝整个字符串。</p>
-<h2 id="五、字符串输入"><a href="#五、字符串输入" class="headerlink" title="五、字符串输入"></a>五、字符串输入</h2><ul>
-<li><h3 id="分配空间"><a href="#分配空间" class="headerlink" title="分配空间"></a>分配空间</h3></li>
-<li><h3 id="gets-函数"><a href="#gets-函数" class="headerlink" title="gets()函数"></a>gets()函数</h3></li>
-</ul>
-<p>在读取字符串时，scanf()和转换说明%s只能读取一个单词，可是在程序中经常要读取一整行输入，而不仅仅是一个单词。许多年前gets()函数用于处理这种情况。gets()函数读取整行输入，直到遇见换行符，然后丢弃换行符，储存其余字符，并在这些字符的末尾添加一个空字符使其成为一个C字符串，它经常和puts()函数配对使用，该函数用于显示字符串，并在末行添加换行符。</p>
-<p><strong>作用：读取用户输入的整行字符串并换行。</strong></p>
-<p>C99建议少用，C11标准直接废除gets()函数。</p>
-<ul>
-<li><h3 id="gets-函数的替代品"><a href="#gets-函数的替代品" class="headerlink" title="gets()函数的替代品"></a>gets()函数的替代品</h3></li>
-</ul>
-<p><em><strong>详情见C Primer Plus</strong></em></p>
-<ul>
-<li><h2 id="scanf（）函数"><a href="#scanf（）函数" class="headerlink" title="scanf（）函数"></a>scanf（）函数</h2></li>
-</ul>
-<p>scanf()函数有两种方法确定输入结束，一种是使用%s转换说明，当读入到一个空白字符停止，一种是指定了字段宽度，如%10s，那么则只会读取10个字符或者读入到空白字符停止。</p>
-<table>
-<thead>
-<tr>
-<th align="center">输入语句</th>
-<th align="center">原输入序列</th>
-<th align="center">name中的内容</th>
-<th align="center">剩余输入序列</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>scanf(&quot;%s&quot;,name);</code></td>
-<td align="center"><code>Fleebert空格Hup</code></td>
-<td align="center"><code>Fleebert</code></td>
-<td align="center"><code>空格Hup</code></td>
-</tr>
-<tr>
-<td align="center"><code>scanf(&quot;%5s&quot;,name);</code></td>
-<td align="center"><code>Fleebert空格Hup</code></td>
-<td align="center"><code>Fleeb</code></td>
-<td align="center"><code>ert空格Hup</code></td>
-</tr>
-<tr>
-<td align="center"><code>scanf(&quot;%5s&quot;,name);</code></td>
-<td align="center"><code>Ann空格Ular</code></td>
-<td align="center"><code>Ann</code></td>
-<td align="center"><code>空格Ular</code></td>
-</tr>
-</tbody></table>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%5s,%10s&quot;</span>,name1,name2);</span><br><span class="line"><span class="comment">//输入abcdefg abc</span></span><br><span class="line"><span class="comment">//输出结果abcde fg</span></span><br><span class="line"><span class="comment">//scanf()从上次调用结束的地方继续读取数据，仍读取的abcdefg中的字母</span></span><br></pre></td></tr></table></figure>
-
-<p>如果一次只输入一个单词，用scanf()也没有问题，scanf()存在一些潜在的缺点，如果输入行的内容过长，scanf()也会导致数据溢出，不过，在%s转换说明中使用字段宽度可防止溢出。</p>
-<h2 id="六、字符串输出"><a href="#六、字符串输出" class="headerlink" title="六、字符串输出"></a>六、字符串输出</h2><ul>
-<li><h3 id="put-fputs-printf-三个函数可以输出字符串"><a href="#put-fputs-printf-三个函数可以输出字符串" class="headerlink" title="put(),fputs(),printf()三个函数可以输出字符串"></a>put(),fputs(),printf()三个函数可以输出字符串</h3></li>
-</ul>
-<p>puts()函数读取字符串地址，知道读到空字符停止并在输出的末尾添加换行符。</p>
-<p>fputs()函数则不会在输出的末尾添加换行符。</p>
-<p>关于put()和fputs()因为用的不多，此处我们暂时不多展开</p>
-<ul>
-<li><h3 id="printf-函数"><a href="#printf-函数" class="headerlink" title="printf()函数"></a>printf()函数</h3></li>
-</ul>
-<p>printf()函数虽然没有puts()函数那么全能，但是它更多才多艺，因为它可以<strong>格式化不同的数据类型</strong>。</p>
-<p>printf()函数<strong>不会自动在每个字符串末尾加上一个换行符</strong>。因此，必须在在参数中指明应该在哪里使用换行符。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>,<span class="built_in">string</span>);</span><br><span class="line"><span class="comment">//等价于下列语句</span></span><br><span class="line"><span class="built_in">puts</span>(<span class="built_in">string</span>);</span><br></pre></td></tr></table></figure>
-
-<p>printf()打印多个字符串更加简单。</p>
-<p><code>printf(&quot;well,%s,%s\n&quot;,name,MSG);</code></p>
-<h2 id="七、自定义输入-x2F-输出函数"><a href="#七、自定义输入-x2F-输出函数" class="headerlink" title="七、自定义输入&#x2F;输出函数"></a>七、自定义输入&#x2F;输出函数</h2><h2 id="八、字符串函数"><a href="#八、字符串函数" class="headerlink" title="八、字符串函数"></a>八、字符串函数</h2><ul>
-<li><h3 id="strlen-函数"><a href="#strlen-函数" class="headerlink" title="strlen()函数"></a>strlen()函数</h3></li>
-</ul>
-<p><strong>strlen()函数用于统计字符串的长度</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="type">void</span> <span class="title function_">fit</span><span class="params">(<span class="type">char</span> *,<span class="type">unsigned</span> <span class="type">int</span> size)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">strlen</span>(<span class="built_in">string</span>)&gt;size)</span><br><span class="line">    	<span class="built_in">string</span>[size] = <span class="string">&#x27;\0&#x27;</span>;<span class="comment">//puts()读到空字符串就停止了</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">fit</span><span class="params">(<span class="type">char</span> *,<span class="type">unsigned</span> <span class="type">int</span>)</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> mesg [] = <span class="string">&quot;Things should be as simple as possible,but not a simpler.&quot;</span></span><br><span class="line">    <span class="built_in">puts</span>(mesg);</span><br><span class="line">    fit(mesg,<span class="number">38</span>);</span><br><span class="line">    <span class="built_in">puts</span>(mesg);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;Let&#x27;s look at some more of the string.&quot;</span>);</span><br><span class="line">    <span class="built_in">puts</span>(mesg + <span class="number">39</span>);<span class="comment">//mesg + 39是mesg[9]的地址</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*下面是该程序的输出：</span></span><br><span class="line"><span class="comment">Things should be as simple as possible,but not a simpler.</span></span><br><span class="line"><span class="comment">Things should be as simple as possible</span></span><br><span class="line"><span class="comment">Let&#x27;s look at some more of the string.</span></span><br><span class="line"><span class="comment">but not simpler.</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h3 id="strcat-函数"><a href="#strcat-函数" class="headerlink" title="strcat()函数"></a>strcat()函数</h3></li>
-</ul>
-<p><strong>用于拼接字符串</strong>，函数接受两个字符串作为参数。</p>
-<p>strcat()函数的类型是char *(即，指向char的指针)，strcat()函数返回第一个参数，即拼接第二个字符串后的第一个字符串的地址。</p>
-<ul>
-<li><h3 id="strncat-函数"><a href="#strncat-函数" class="headerlink" title="strncat()函数"></a>strncat()函数</h3></li>
-</ul>
-<p>stract()函数无法检查第一个数组能否容纳任第二个字符串。如果分配给第一个数组的空间不够大，多出来的字符溢出到相邻存储单元时就会出问题。</p>
-<p><strong>或者用strncat()函数，该函数的第3个参数指定了最大添加字符数。</strong></p>
-<ul>
-<li><h3 id="strcmp-函数"><a href="#strcmp-函数" class="headerlink" title="strcmp()函数"></a>strcmp()函数</h3></li>
-</ul>
-<p><strong>用于比较字符串的内容，而不是字符串的地址。</strong></p>
-<p>如果相同，该函数就返回0，否则返回非零值。</p>
-<p>可以用strcmp()函数比较储存在不同大小数组中字符串。	</p>
-<p>srcmp()函数的返回值具体详情看C Primer Plus</p>
-<ul>
-<li><h3 id="strncmp-函数"><a href="#strncmp-函数" class="headerlink" title="strncmp()函数"></a>strncmp()函数</h3></li>
-</ul>
-<p>strcmp()函数比较字符串中的字符，直到发现不同的字符为止，这一过程可能会持续到字符串的末尾。</p>
-<p>strncmp()函数在比较两个字符串时，可以比较到字符不同的地方，也可以只比较到第3个参数指定的字符数。</p>
-<ul>
-<li><h3 id="strcpy-函数和strncpy-函数"><a href="#strcpy-函数和strncpy-函数" class="headerlink" title="strcpy()函数和strncpy()函数"></a>strcpy()函数和strncpy()函数</h3></li>
-</ul>
-<p>前面提到过，如果pts1和pts2都是指向字符串的指针，那么下列语句拷贝的是字符串的地址，而不是字符串本身：</p>
-<p><code>pts2 = pts1;</code></p>
-<p><strong>如果希望拷贝整个字符串，要使用strcpy()函数。</strong></p>
-<p><code>strcpy(target,&quot;Hi ho!&quot;);</code></p>
-<p>strcpy()函数还有两个有用的属性。第一，strcpy()的返回类型是char *，该函数返回的是第一个参数的值，即一个字符的地址。第二，第一个参数不必指向数组的开始。这个属性可用于拷贝数组的一部分。</p>
-<p><code>ps = strcpy(copy + 7,orig);</code></p>
-<p>strncpy()函数第三个参数可以指明可拷贝的最大字符数。</p>
-<ul>
-<li><h3 id="sprintf-函数"><a href="#sprintf-函数" class="headerlink" title="sprintf()函数"></a>sprintf()函数</h3></li>
-</ul>
-<p>sprintf()函数声明在stdio.h中，而不是在string.h中。</p>
-<p>它与printf()函数的区别在于它把数据写入字符串，而不是打印在显示器上。</p>
-<p>它的第一个参数是目标字符串的地址。其余参数和printf()相同。</p>
-<h1 id="注：未写出代表太繁琐，这里就不一一赘述。"><a href="#注：未写出代表太繁琐，这里就不一一赘述。" class="headerlink" title="注：未写出代表太繁琐，这里就不一一赘述。"></a>注：未写出代表太繁琐，这里就不一一赘述。</h1>
+        <h1 id="·字符串"><a href="#·字符串" class="headerlink" title="·字符串"></a>·字符串</h1>
+        
+          <p class="article-more-link">
+            <a href="/2022/08/29/%E5%AD%97%E7%AC%A6%E4%B8%B2/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zjnkse.top/2022/08/29/%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cl7hbq39b0003fktd6t1db1y7" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://zjnkse.top/2022/08/29/%E5%AD%97%E7%AC%A6%E4%B8%B2/" data-id="cl7hbw3he00032otd5iqh1prb" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -291,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zjnkse.top/2022/08/27/%E8%AF%A6%E8%A7%A3Typora/" data-id="cl7hbq39c0004fktd6z6lbfb7" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://zjnkse.top/2022/08/27/%E8%AF%A6%E8%A7%A3Typora/" data-id="cl7hbw3hg00042otd68t563ab" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -324,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zjnkse.top/2022/08/26/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E9%A1%BA%E5%BA%8F/" data-id="cl7hbq3990002fktdft6jcb05" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://zjnkse.top/2022/08/26/%E5%8A%9B%E6%89%A3%E5%88%B7%E9%A2%98%E9%A1%BA%E5%BA%8F/" data-id="cl7hbw3h300012otdd86bexf2" data-title="" class="article-share-link">Share</a>
       
       
       
@@ -367,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zjnkse.top/2022/08/26/Typora%E5%9F%BA%E6%9C%AC%E5%BF%AB%E6%8D%B7%E9%94%AE/" data-id="cl7hbq3940001fktd5pk458im" data-title="Typora基本快捷键" class="article-share-link">Share</a>
+      <a data-url="http://zjnkse.top/2022/08/26/Typora%E5%9F%BA%E6%9C%AC%E5%BF%AB%E6%8D%B7%E9%94%AE/" data-id="cl7hbw3ha00022otd18bj0e75" data-title="Typora基本快捷键" class="article-share-link">Share</a>
       
       
       
@@ -405,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://zjnkse.top/2022/08/26/I-LOVE-LIUTONG/" data-id="cl7hbq38t0000fktdfttpgj9j" data-title="I LOVE LIUTONG" class="article-share-link">Share</a>
+      <a data-url="http://zjnkse.top/2022/08/26/I-LOVE-LIUTONG/" data-id="cl7hbw3gr00002otde9xu3fzv" data-title="I LOVE LIUTONG" class="article-share-link">Share</a>
       
       
       
